@@ -4,10 +4,10 @@
 #include <ctime>
 using namespace std;
 
-int gameon() { //Spelet i sig, slumpningnen händer här.
+int gameon() { //Spelet i sig, slumpningnen hÃ¤nder hÃ¤r.
 	int x = 0, y = 0, vf = 0;
 	int game[3][3]{};
-	cout << " ___________ " << endl; //Lite "cout" för att bygga ett fint rutnät mot slutet.
+	cout << " ___________ " << endl; //Lite "cout" fÃ¶r att bygga ett fint rutnÃ¤t mot slutet.
 	cout << "|";
 	for (x = 0; x < 3; x++) {
 		Sleep(1500);
@@ -17,13 +17,13 @@ int gameon() { //Spelet i sig, slumpningnen händer här.
 
 			game[x][y] = rand() % 3;
 
-			if (game[x][y] == 0) { // X med boxväggarna
+			if (game[x][y] == 0) { // X med boxvÃ¤ggarna
 				cout << "_X_|";
 			}
-			if (game[x][y] == 1) { // Y med boxväggarna
+			if (game[x][y] == 1) { // Y med boxvÃ¤ggarna
 				cout << "_Y_|";
 			}
-			if (game[x][y] == 2) { // Z med boxväggarna
+			if (game[x][y] == 2) { // Z med boxvÃ¤ggarna
 				cout << "_Z_|";
 			}
 			if (x == 0 && y == 2) {
@@ -39,7 +39,7 @@ int gameon() { //Spelet i sig, slumpningnen händer här.
 			}
 		}
 	}
-	// Kontrollen av hur många rader som ger vinst.
+	// Kontrollen av hur mÃ¥nga rader som ger vinst.
 	if (game[0][0] == game[0][1] && game[0][0] == game[0][2]) {
 		vf++;
 	}
@@ -68,32 +68,32 @@ int gameon() { //Spelet i sig, slumpningnen händer här.
 	return vf;
 }
 
-void name() { //Bara en vänlig hälsning till spelaren
+void name() { //Bara en vÃ¤nlig hÃ¤lsning till spelaren
 	string name;
 	cout << "Vad heter du?" << endl;
 	cin >> name;
-	cout << "Hejsan " << name << "! Låt oss börja spelet." << endl;
+	cout << "Hejsan " << name << "! LÃ¥t oss bÃ¶rja spelet." << endl;
 }
 
-int insättning(int x, int y) { //funktion för att sätta in pengar och sedan addera på det på ditt aktuella saldo
+int insÃ¤ttning(int x, int y) { //funktion fÃ¶r att sÃ¤tta in pengar och sedan addera pÃ¥ det pÃ¥ ditt aktuella saldo
 	int i = 0, nyin, tal1 = 100, tal2 = 300, tal3 = 500;
-	cout << "Vill du sätt in pengar? Ja[1] / Nej[2]" << endl;
+	cout << "Vill du sÃ¤tt in pengar? Ja[1] / Nej[2]" << endl;
 	cin >> nyin;
-	if (nyin == 1) { //Loop för att man bara kan sätta in 100, 300 eller 500kr
-		cout << "Hur mycket vill du sätta in?" << endl;
+	if (nyin == 1) { //Loop fÃ¶r att man bara kan sÃ¤tta in 100, 300 eller 500kr
+		cout << "Hur mycket vill du sÃ¤tta in?" << endl;
 		cin >> x;
 		while (i != 1) {
 			if ((x != tal1) && (x != tal2) && (x != tal3)) {
-				cout << "Du kan bara sätta in 100, 300 eller 500kr." << endl;
-				cout << "Hur mycket vill du sätta in?" << endl;
+				cout << "Du kan bara sÃ¤tta in 100, 300 eller 500kr." << endl;
+				cout << "Hur mycket vill du sÃ¤tta in?" << endl;
 				cin >> x;
 			}
 			else {
 				i = 1;
 			}
 		}
-		cout << "Du har valt att sätta in " << x << "kr." << endl;
-		y = y + x; //Addering av insättningen och gamla saldot
+		cout << "Du har valt att sÃ¤tta in " << x << "kr." << endl;
+		y = y + x; //Addering av insÃ¤ttningen och gamla saldot
 		return y;
 	}
 	else {
@@ -101,7 +101,7 @@ int insättning(int x, int y) { //funktion för att sätta in pengar och sedan adde
 	}
 }
 
-int satsning() { //Funktion för satsa pengar som returerar satsningen och håller kvar det inför Vinst/Förlust beräkningen
+int satsning() { //Funktion fÃ¶r satsa pengar som returerar satsningen och hÃ¥ller kvar det infÃ¶r Vinst/FÃ¶rlust berÃ¤kningen
 	int i = 0, s, satsa[6]{ 50, 100, 200, 300, 400, 500 };
 	cout << "Hur mycket vill du satsa?" << endl;
 	cin >> s;
@@ -120,103 +120,103 @@ int satsning() { //Funktion för satsa pengar som returerar satsningen och håller
 }
 
 int main() {
-	/*Måste inkludera Å Ä Ö*/
+	/*MÃ¥ste inkludera Ã¥ Ã¤ Ã¶*/
 	setlocale(LC_ALL, "swedish");
-	int age = 0, saldo = 0, spelaom = 1, vf = 0, satsa = 0, pms = 0; //Tänkte använda ett Array, men crashade spelet tyvärr
-	cout << "Välkommen till Zi'Bandit!" << endl;
+	int age = 0, saldo = 0, spelaom = 1, vf = 0, satsa = 0, pms = 0; //TÃ¶nkte anvÃ¶nda ett Array, men crashade spelet tyvÃ¶rr
+	cout << "VÃ¤lkommen till Zi'Bandit!" << endl;
 	name(); //Tillkallar "Void Name"-funktionen
-	/*Måste ju enligt lag kontrollera spelarens ålder på casinospel :P*/
-	cout << "Man måste vara över 18 år för att spela, hur gammal är du?" << endl;
+	/*MÃ¥ste ju enligt lag kontrollera spelarens Ã¥lder pÃ¥ casinospel :P*/
+	cout << "Man mÃ¥ste vara Ã¶ver 18 Ã¥r fÃ¶r att spela, hur gammal Ã¤r du?" << endl;
 	cin >> age;
 	if (age <= 17) {
-		cout << "Du är för ung för att spela detta spelet." << endl;
+		cout << "Du Ã¤r fÃ¶r ung fÃ¶r att spela detta spelet." << endl;
 		return 0;
 	}
 	else {
 		cout << "Let's Rock this place!" << endl;
 	}
-	/*Lite lätt info om hur spelet funkar*/
+	/*Lite lÃ¤tt info om hur spelet funkar*/
 	cout << "Lite information om hur spelet funkar." << endl;
 	cout << "Du kan alltid avsluta spelet genom att trycka (ctrl + c)." << endl;
-	cout << "Enarmad Bandit är ett spel där man väljer att spela på 1-8 rader." << endl;
-	cout << "För att vinna måste man få 3 tecken i rad, antingen lodrätt, vågrätt eller på diagonalen." << endl;
+	cout << "Enarmad Bandit Ã¶r ett spel dÃ¤r man vÃ¤ljer att spela pÃ¥ 1-8 rader." << endl;
+	cout << "FÃ¶r att vinna mÃ¥ste man fÃ¥ 3 tecken i rad, antingen lodrÃ¤tt, vÃ¥grÃ¤tt eller pÃ¥ diagonalen." << endl;
 	cout << "  ___________  " << "  ___________  " << "  ___________" << endl;
 	cout << " |_>_|___|___| " << " |___|___|___| " << " |___|___|_/_|" << endl;
 	cout << " |_>_|___|___| " << " |___|___|___| " << " |___|_/_|___|" << endl;
 	cout << " |_>_|___|___| " << " |_^_|_^_|_^_| " << " |_/_|___|___|" << endl;
-	cout << "Sedan vinner man mer om man har gissat rätt på mer än en rad." << endl;
-	cout << "Låt oss börja med att sätta in pengar att spela för." << endl;
-	while (spelaom == 1) { //Spelets Main While-Loop så att man kan spela mer än en gång
-		saldo = insättning(0, saldo); //Tillkallar Insättningensfunktionen
-		cout << "Nu har du " << saldo << " att spela för." << endl;
+	cout << "Sedan vinner man mer om man har gissat rÃ¤tt pÃ¥ mer Ã¤n en rad." << endl;
+	cout << "LÃ¥t oss bÃ¶rja med att sÃ¤tta in pengar att spela fÃ¶r." << endl;
+	while (spelaom == 1) { //Spelets Main While-Loop sÃ¥ att man kan spela mer Ã¤n en gÃ¥ng
+		saldo = insÃ¶ttning(0, saldo); //Tillkallar InsÃ¤ttningensfunktionen
+		cout << "Nu har du " << saldo << " att spela fÃ¶r." << endl;
 		satsa = satsning(); //Satsnings funktionen
-		vf = gameon(); //Main spel Funktionen returnerar "vf" som innehåller hur många rader som var vinst
-		if (vf == 1) { //Kontroll av hur stor vinsten blev med hjälp av "vf"
+		vf = gameon(); //Main spel Funktionen returnerar "vf" som innehÃ¥ller hur mÃ¥nga rader som var vinst
+		if (vf == 1) { //Kontroll av hur stor vinsten blev med hjÃ¤lp av "vf"
 			cout << "Du vann!" << endl;
 			satsa = satsa * 2;
 			cout << "Din vinst blev " << satsa << "kr!" << endl;
 			saldo = saldo + satsa;
-			cout << "Ditt saldo är just nu " << saldo << "kr." << endl;
+			cout << "Ditt saldo Ã¤r just nu " << saldo << "kr." << endl;
 		}
 		else if (vf == 2) {
 			cout << "Du vann!" << endl;
 			satsa = satsa * 3;
 			cout << "Din vinst blev " << satsa << "kr!" << endl;
 			saldo = saldo + satsa;
-			cout << "Ditt saldo är just nu " << saldo << "kr." << endl;
+			cout << "Ditt saldo Ã¤r just nu " << saldo << "kr." << endl;
 		}
 		else if (vf == 3) {
 			cout << "Du vann!" << endl;
 			satsa = satsa * 4;
 			cout << "Din vinst blev " << satsa << "kr!" << endl;
 			saldo = saldo + satsa;
-			cout << "Ditt saldo är just nu " << saldo << "kr." << endl;
+			cout << "Ditt saldo Ã¤r just nu " << saldo << "kr." << endl;
 		}
 		else if (vf == 4) {
 			cout << "Du vann!" << endl;
 			satsa = satsa * 5;
 			cout << "Din vinst blev " << satsa << "kr!" << endl;
 			saldo = saldo + satsa;
-			cout << "Ditt saldo är just nu " << saldo << "kr." << endl;
+			cout << "Ditt saldo Ã¤r just nu " << saldo << "kr." << endl;
 		}
 		else if (vf == 5) {
 			cout << "Du vann!" << endl;
 			satsa = satsa * 7;
 			cout << "Din vinst blev " << satsa << "kr!" << endl;
 			saldo = saldo + satsa;
-			cout << "Ditt saldo är just nu " << saldo << "kr." << endl;
+			cout << "Ditt saldo Ã¤r just nu " << saldo << "kr." << endl;
 		}
 		else if (vf == 6) {
 			cout << "Du vann!" << endl;
 			satsa = satsa * 10;
 			cout << "Din vinst blev " << satsa << "kr!" << endl;
 			saldo = saldo + satsa;
-			cout << "Ditt saldo är just nu " << saldo << "kr." << endl;
+			cout << "Ditt saldo Ã¤r just nu " << saldo << "kr." << endl;
 		}
 		else if (vf == 7) {
 			cout << "Du vann!" << endl;
 			satsa = satsa * 10;
 			cout << "Din vinst blev " << satsa << "kr!" << endl;
 			saldo = saldo + satsa;
-			cout << "Ditt saldo är just nu " << saldo << "kr." << endl;
+			cout << "Ditt saldo Ã¤r just nu " << saldo << "kr." << endl;
 		}
 		else if (vf == 8) {
 			cout << "Du vann!" << endl;
 			satsa = satsa * 10;
 			cout << "Din vinst blev " << satsa << "kr!" << endl;
 			saldo = saldo + satsa;
-			cout << "Ditt saldo är just nu " << saldo << "kr." << endl;
+			cout << "Ditt saldo Ã¤r just nu " << saldo << "kr." << endl;
 		}
 		else {
-			cout << "Du förlorade!" << endl;
+			cout << "Du fÃ¶rlorade!" << endl;
 			saldo = saldo - satsa;
-			cout << "Ditt saldo är just nu " << saldo << "kr." << endl;
+			cout << "Ditt saldo Ã¤r just nu " << saldo << "kr." << endl;
 		}
-		cout << "Vill du fortsätta spela? Ja[1] / Nej[2]" << endl; //Väg val för om man vill spela igen eller inte
+		cout << "Vill du fortsÃ¤tta spela? Ja[1] / Nej[2]" << endl; //VÃ¤g val fÃ¶r om man vill spela igen eller inte
 		cin >> pms;
 		if (pms == 2) {
-			cout << "Tack för att du spelade Zi'Bandit" << endl; //Vänligt avslut, med avslutshälsning.
-			cout << "Välkommen åter!" << endl;
+			cout << "Tack fÃ¶r att du spelade Zi'Bandit" << endl; //VÃ¤nligt avslut, med avslutshÃ¤lsning.
+			cout << "VÃ¤lkommen Ã¥ter!" << endl;
 			spelaom = 0;
 		}
 		else {
